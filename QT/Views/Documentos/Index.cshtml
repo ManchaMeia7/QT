@@ -1,0 +1,60 @@
+﻿@model IEnumerable<QT.Models.Documento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de documentos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-dark">Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Processo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Arquivo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Processo.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeDoArquivo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Codigo" class="btn">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Codigo " class="btn">Detalhes</a> |
+                <a asp-action="Baixar" asp-route-id="@item.Codigo" class="btn">Baixar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Codigo" class="btn">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
