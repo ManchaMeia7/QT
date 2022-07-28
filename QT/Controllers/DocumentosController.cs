@@ -163,6 +163,7 @@ namespace QT.Controllers
 
                     _context.Update(documento);
                     await _context.SaveChangesAsync();
+                    _notyf.Success("Edição feita com sucesso.");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
